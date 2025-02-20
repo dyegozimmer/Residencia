@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Residência Zimmer</title>
+		<meta name="viewport" content="width=decive-width; intial-scale=1; maximum-scale=1">
+		<meta http-equiv="refresh" content="30">	
+		<script type="text/javascript">
+			function LerSensores(){
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function(){
+					if(this.readyState == 4){
+						if(this.status == 200){
+							if(this.responseText != null){
+								var dados = this.responseText.split('|');
+								if(dados[0] == 0){
+									document.getElementById("btCentral").style.backgroundColor = "#00FF00";
+								}
+								if(dados[0] == 1){
+									document.getElementById("btCentral").style.backgroundColor = "#FF0000";
+								}
+
+								if(dados[1] == 0){
+									document.getElementById("btViagem").style.backgroundColor = "#00FF00";
+								}
+								if(dados[1] == 1){
+									document.getElementById("btViagem").style.backgroundColor = "#FF0000";
+								}
+
+								if(dados[2] == 0){
+									document.getElementById("btAgua").style.backgroundColor = "#00FF00";
+									document.getElementById("btAgua").style.cursor = "pointer";
+								}
+								if(dados[2] == 1){
+									document.getElementById("btAgua").style.backgroundColor = "#FF0000";
+									document.getElementById("btAgua").style.cursor = "pointer";
+								}
+								if(dados[2] == 2){
+									document.getElementById("btAgua").style.backgroundColor = "#808080";
+									document.getElementById("btAgua").style.cursor = "default";
+								}
+								if(dados[3] == 0){
+									document.getElementById("btSala").style.backgroundColor = "#FF0000";
+								}
+								if(dados[3] == 1){
+									document.getElementById("btSala").style.backgroundColor = "#00FF00";
+								}
+								if(dados[4] == 0){
+									document.getElementById("btCozinha").style.backgroundColor = "#FF0000";
+								}
+								if(dados[4] == 1){
+									document.getElementById("btCozinha").style.backgroundColor = "#00FF00";
+								}
+								if(dados[5] == 0){
+									document.getElementById("btQuartoF").style.backgroundColor = "#FF0000";
+								}
+								if(dados[5] == 1){
+									document.getElementById("btQuartoF").style.backgroundColor = "#00FF00";
+								}
+								if(dados[6] == 0){
+									document.getElementById("btQuartoA").style.backgroundColor = "#FF0000";
+								}
+								if(dados[6] == 1){
+									document.getElementById("btQuartoA").style.backgroundColor = "#00FF00";
+								}
+								if(dados[7] == 0){
+									document.getElementById("btWC1And").style.backgroundColor = "#FF0000";
+								}
+								if(dados[7] == 1){
+									document.getElementById("btWC1And").style.backgroundColor = "#00FF00";
+								}
+								if(dados[8] == 0){
+									document.getElementById("btWC2And").style.backgroundColor = "#FF0000";
+								}
+								if(dados[8] == 1){
+									document.getElementById("btWC2And").style.backgroundColor = "#00FF00";
+								}
+								if(dados[9] == 0){
+									document.getElementById("btCorredor").style.backgroundColor = "#FF0000";
+								}
+								if(dados[9] == 1){
+									document.getElementById("btCorredor").style.backgroundColor = "#00FF00";
+								}
+								if(dados[10] == 0){
+									document.getElementById("btLavanderia").style.backgroundColor = "#FF0000";
+								}
+								if(dados[10] == 1){
+									document.getElementById("btLavanderia").style.backgroundColor = "#00FF00";
+								}
+								if(dados[11] == 0){
+									document.getElementById("btGaragem").style.backgroundColor = "#FF0000";
+								}
+								if(dados[11] == 1){
+									document.getElementById("btGaragem").style.backgroundColor = "#00FF00";
+								}
+								if(dados[12] == 1){
+									document.getElementById("btCxInterna").innerHTML = 'Cx. Agua Chuva (Cheia)';
+									document.getElementById("btCxInterna").style.color = "#00FF00";
+								}
+								if(dados[12] == 2){
+									document.getElementById("btCxInterna").innerHTML = 'Cx. Agua Chuva (Acima 50%)';
+									document.getElementById("btCxInterna").style.color = "#00FF00";
+								}
+								if(dados[12] == 3){
+									document.getElementById("btCxInterna").innerHTML = 'Cx. Agua Chuva (Abaixo 50%)';
+									document.getElementById("btCxInterna").style.color = "#00FF00";
+								}
+								if(dados[12] == 4){
+									document.getElementById("btCxInterna").innerHTML = 'Cx. Agua Chuva (Vazia)';
+									document.getElementById("btCxInterna").style.color = "#FF0000";
+								}
+								if(dados[13] == 1){
+									document.getElementById("btCxExterna").innerHTML = 'Caixa de Cisterna (Cheia)';
+									document.getElementById("btCxExterna").style.color = "#00FF00";
+								}
+								if(dados[13] == 2){
+									document.getElementById("btCxExterna").innerHTML = 'Caixa de Cisterna (Acima 50%)';
+									document.getElementById("btCxExterna").style.color = "#00FF00";
+								}
+								if(dados[13] == 3){
+									document.getElementById("btCxExterna").innerHTML = 'Caixa de Cisterna (Abaixo 50%)';
+									document.getElementById("btCxExterna").style.color = "#00FF00";
+								}
+								if(dados[13] == 4){
+									document.getElementById("btCxExterna").innerHTML = 'Caixa de Cisterna (Vazia)';
+									document.getElementById("btCxExterna").style.color = "#FF0000";
+								}
+
+								if(dados[14] == 1){
+									document.getElementById("btCxRua").innerHTML = 'Caixa de Agua Rua <br> (Cheia)';
+									document.getElementById("btCxRua").style.color = "#00FF00";
+								}
+								if(dados[14] == 2){
+									document.getElementById("btCxRua").innerHTML = 'Caixa de Agua Rua <br> (Acima 50%)';
+									document.getElementById("btCxRua").style.color = "#00FF00";
+								}
+								if(dados[14] == 3){
+									document.getElementById("btCxRua").innerHTML = 'Caixa de Agua Rua <br> (Abaixo 50%)';
+									document.getElementById("btCxRua").style.color = "#00FF00";
+								}
+								if(dados[14] == 4){
+									document.getElementById("btCxRua").innerHTML = 'Caixa de Agua Rua <br> (Vazia)';
+									document.getElementById("btCxRua").style.color = "#FF0000";
+								}
+							}
+						}
+					}
+				}
+				request.open("GET", "ajax_LerDados", true);
+				request.send(null);
+			}
+			function LerCentral(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerCentral", true);
+				request.send();
+			}
+			function LerViagem(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerViagem", true);
+				request.send();
+			}
+			function LerAgua(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerAgua", true);
+				request.send(null);
+			}
+			function LerSala(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerSala", true);
+				request.send(null);
+			}
+			function LerCozinha(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerCozinha", true);
+				request.send(null);
+			}
+			function LerQuartoF(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerQuartoF", true);
+				request.send(null);
+			}
+			function LerQuartoA(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerQuartoA", true);
+				request.send(null);
+			}
+			function LerWC1And(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerWC1And", true);
+				request.send(null);
+			}
+			function LerWC2And(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerWC2And", true);
+				request.send(null);
+			}
+			function LerCorredor(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerCorredor", true);
+				request.send(null);
+			}
+			function LerLavanderia(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerLavanderia", true);
+				request.send(null);
+			}
+			function LerGaragem(){
+				var request = new XMLHttpRequest();
+				request.open("GET", "ajax_LerGaragem", true);
+				request.send(null);
+			}
+		</script>
+
+		<style type="text/css">
+		h2 {
+			color: white;
+			font-size: 28px;
+		}
+		body {
+			font-family: Arial;
+			margin: 0px;
+		}
+		.header{
+			width: 50%;
+			height: 110px;
+			border: 5px;
+			background-color: #0000FF;
+			margin-top: 0px;
+		}
+		h5{
+			margin-top: 40px;
+			margin-bottom: 0px;
+			color: #00979C;
+			font-size: 15px;
+		}
+		p{
+			color: #ffffff;
+		}
+		.clCentral{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btCentral{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clViagem{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btViagem{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 10px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+		.wrapper{
+			width: 35%;
+			height: 3px;
+			border: 5px;
+			background-color: #0000FF;
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		.wrapper2{
+			width: 35%;
+			height: 3.5px;
+			border: 10px;
+			background-color: #0000FF;
+		}
+		.clAgua{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btAgua{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 10px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+		.clbtCxInterna{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btCxInterna{
+			width: 150px;height: 39px;
+			border-radius: 1em 1em 1em 1em;
+			display: inline-block;
+			text-align: center;
+			backgroundColor: white;
+			margin-bottom: 10px;
+			border: 1px solid #E6E6E6;
+		}
+		.btCxExterna{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btCxExterna{
+			width: 150px;height: 39px;
+			border-radius: 1em 1em 1em 1em;
+			display: inline-block;
+			text-align: center;
+			backgroundColor: white;
+			margin-bottom: 10px;
+			border: 1px solid #E6E6E6;
+		}
+		.btCxRua{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btCxRua{
+			width: 190px;height: 39px;
+			border-radius: 1em 1em 1em 1em;
+			display: inline-block;
+			text-align: center;
+			backgroundColor: white;
+			margin-bottom: 10px;
+			border: 1px solid #E6E6E6;
+		}
+		.clSala{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btSala{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clCozinha{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btCozinha{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clQuartoF{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btQuartoF{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clQuartoA{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btQuartoA{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clWC1And{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btWC1And{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clWC2And{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btWC2And{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clCorredor{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btCorredor{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clLavanderia{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btLavanderia{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		.clGaragem{
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 3px;
+		}
+		#btGaragem{
+			width: 160px;height: 30px;
+			border-radius: 1em 4em 1em 4em;
+			margin-bottom: 0px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			margin-top: 0px;
+		}
+		</style>
+	</head>
+
+	<body onload="LerSensores()">
+		<center>
+			<div class="header">
+				</br>
+				<div>
+					<h2>Controle Iluminação</h2>
+				</div>
+				</br>
+			</div>
+		</br>
+			<div id="btCentral" onclick="LerCentral();LerSensores();">
+				<p class="clCentral">Central</p>
+			</div>
+			<div id="btViagem" onclick="LerViagem();LerSensores();">
+				<p class="clViagem">Viagem</p>
+			</div>
+		</br>
+		</br>
+			<div class="wrapper"></div>
+		</br>
+			<div id="btAgua" onclick="LerAgua();LerSensores();">
+				<p class="clAgua">Cx. d'Agua</p>
+			</div>
+		</br>
+		</br>
+			<div id="btCxInterna">
+			</div>
+			<div id="btCxExterna">
+			</div>
+		</br>
+		</br>
+			<div class="wrapper"></div>
+		</br>
+		</br>
+			<div id="btCxRua">
+			</div>
+		</br>
+		</br>
+			<div class="wrapper2"></div>
+		</br>
+		</br>
+			<div id="btSala" onclick="LerSala();LerSensores();">
+				<p class="clSala">Sala</p>
+			</div>
+			<div id="btCozinha" onclick="LerCozinha();LerSensores();">
+				<p class="clCozinha">Cozinha</p>
+			</div>
+		</br>
+		</br>
+			<div id="btQuartoF" onclick="LerQuartoF();LerSensores();">
+				<p class="clQuartoF">Quarto C.</p>
+			</div>
+			<div id="btQuartoA" onclick="LerQuartoA();LerSensores();">
+				<p class="clQuartoA">Quarto S.</p>
+			</div>
+		</br>
+		</br>
+			<div id="btWC1And" onclick="LerWC1And();LerSensores();">
+				<p class="clWC1And">WC 1 Andar</p>
+			</div>
+			<div id="btWC2And" onclick="LerWC2And();LerSensores();">
+				<p class="clWC2And">WC 2 Andar</p>
+			</div>
+		</br>
+		</br>
+			<div id="btCorredor" onclick="LerCorredor();LerSensores();">
+				<p class="clCorredor">Corredor</p>
+			</div>
+			<div id="btLavanderia" onclick="LerLavanderia();LerSensores();">
+				<p class="clLavanderia">Lavanderia</p>
+			</div>
+		</br>
+		</br>
+			<div id="btGaragem" onclick="LerGaragem();LerSensores();">
+				<p class="clGaragem">Garagem</p>
+			</div>
+
+		</center>
+	</body>
+</html>
